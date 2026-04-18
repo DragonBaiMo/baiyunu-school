@@ -28,7 +28,7 @@ async function request<T>(path: string, options?: RequestInit): Promise<T> {
 
     if (res.status === 401) {
       setToken(null);
-      window.location.assign('/login');
+      window.location.hash = '#/login';
     }
 
     throw new ApiError(res.status, res.statusText, body);

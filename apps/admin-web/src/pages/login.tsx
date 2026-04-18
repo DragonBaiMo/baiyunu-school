@@ -12,6 +12,7 @@ import {
   FormMessage,
 } from '../components/ui/form.js';
 import { Input } from '../components/ui/input.js';
+import { setToken } from '../lib/auth.js';
 
 const loginSchema = z.object({
   username: z.string().min(2, { message: '用户名至少 2 个字符' }),
@@ -29,8 +30,12 @@ export default function LoginPage(): JSX.Element {
   });
 
   const onSubmit = (values: LoginFormValues): void => {
-    // eslint-disable-next-line no-console
-    console.log('[admin-web] 登录表单提交（占位）', { username: values.username });
+    if (values.username === 'admin' && values.password === 'admin123') {
+      setToken('mock_admin_token_' + Date.now());
+      window.location.hash = '#/dashboard';
+    } else {
+      form.setError('password', { message: '用户名或密码错误' });
+    }
   };
 
   return (

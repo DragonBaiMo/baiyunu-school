@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { ShieldCheck, GraduationCap, Upload, ChevronLeft } from 'lucide-react';
 import { Button } from '../components/Button.js';
 import { api } from '../lib/api.js';
+import { setToken, setUser } from '../lib/auth.js';
 
 type AuthMode = 'choose' | 'form' | 'submitted';
 
@@ -165,7 +166,9 @@ function AuthenticationFlow({ navigate }: { navigate: ReturnType<typeof useNavig
   }
 
   function handleSsoLogin(): void {
-    window.alert('超星统一认证登录：此功能将跳转至超星 SSO 系统（开发中）');
+    setToken('mock_alumni_sso_token');
+    setUser({ sub: 'alumni_001', roles: ['alumni'], name: '张三（2016级计算机科学）' });
+    navigate('/home');
   }
 
   async function handleSubmit(e: FormEvent): Promise<void> {
@@ -200,13 +203,15 @@ function AuthenticationFlow({ navigate }: { navigate: ReturnType<typeof useNavig
       /* 后端未连通也继续走占位逻辑 */
     }
 
+    setToken('mock_alumni_form_token');
+    setUser({ sub: 'alumni_002', roles: ['alumni'], name: form.name || '校友用户' });
     const application: StoredApplication = {
-      status: 'pending',
+      status: 'approved',
       submittedAt: new Date().toLocaleString('zh-CN'),
     };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(application));
     setSubmitting(false);
-    setMode('submitted');
+    navigate('/home');
   }
 
   if (mode === 'submitted') {
