@@ -1,0 +1,6 @@
+{
+  "package": "@bynu/cache",
+  "path": "packages\\cache",
+  "hasTest": true,
+  "runAt": "2026-04-18T00:31:05.1365553+08:00"
+}

@@ -1,0 +1,6 @@
+{
+  "package": "@bynu/admin-web",
+  "path": "apps\\admin-web",
+  "hasTest": true,
+  "runAt": "2026-04-18T00:31:05.1178431+08:00"
+}

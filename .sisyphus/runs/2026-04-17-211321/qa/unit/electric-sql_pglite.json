@@ -1,0 +1,6 @@
+{
+  "package": "@electric-sql/pglite",
+  "path": "packages\\db\\node_modules\\@electric-sql\\pglite",
+  "hasTest": true,
+  "runAt": "2026-04-18T00:29:41.6934909+08:00"
+}

@@ -1,0 +1,6 @@
+{
+  "package": "@bynu/service-portal-cms",
+  "path": "services\\portal-cms",
+  "hasTest": true,
+  "runAt": "2026-04-18T00:29:41.7451787+08:00"
+}

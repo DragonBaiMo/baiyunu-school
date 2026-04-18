@@ -1,0 +1,6 @@
+{
+  "package": "@bynu/service-notification",
+  "path": "services\\notification",
+  "hasTest": true,
+  "runAt": "2026-04-18T00:29:41.7422144+08:00"
+}

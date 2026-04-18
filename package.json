@@ -1,0 +1,41 @@
+{
+  "name": "bynu-alumni-platform",
+  "version": "0.1.0-alpha",
+  "private": true,
+  "description": "白云学院超星智慧校友服务平台 Monorepo",
+  "packageManager": "pnpm@10.8.1",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "dev:all": "concurrently -n server,bff,admin,h5 -c cyan,magenta,yellow,green \"pnpm -F @bynu/server start:dev\" \"pnpm -F @bynu/bff-gateway start:dev\" \"pnpm -F @bynu/admin-web dev\" \"pnpm -F @bynu/alumni-h5 dev\"",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "format": "prettier --write \"**/*.{ts,tsx,js,json,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,json,md}\"",
+    "gen:api": "tsx tools/codegen/gen.ts",
+    "ci": "pwsh -NoProfile -ExecutionPolicy Bypass -File tools/scripts/ci.ps1",
+    "reset": "pwsh -NoProfile -Command \"& { cmd /c tools\\scripts\\reset-db.bat }\"",
+    "clean": "turbo run clean && rimraf node_modules"
+  },
+  "devDependencies": {
+    "@types/node": "20.12.12",
+    "@typescript-eslint/eslint-plugin": "8.16.0",
+    "@typescript-eslint/parser": "8.16.0",
+    "concurrently": "9.1.0",
+    "eslint": "8.57.1",
+    "prettier": "3.3.3",
+    "rimraf": "6.0.1",
+    "tsx": "4.19.2",
+    "turbo": "2.3.3",
+    "typescript": "5.6.3"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": ["react", "react-dom"]
+    }
+  }
+}

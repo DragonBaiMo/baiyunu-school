@@ -1,0 +1,298 @@
+// Prisma 6.x schema · 15 张核心表。
+// 本文件是契约记录；dev 运行时使用 pglite 直连 + src/migrations.ts 建表 SQL。
+// 生产部署时通过 `prisma migrate deploy` 完成迁移。
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum AlumniStatus {
+  active
+  frozen
+}
+
+enum ApplicationStatus {
+  pending
+  approved
+  rejected
+  supplement
+}
+
+enum OrgNodeType {
+  SCHOOL
+  COLLEGE
+  DEPARTMENT
+  CLASS
+  BRANCH
+}
+
+enum EnrollmentStatus {
+  enrolled
+  checked
+  cancelled
+}
+
+enum DonationChannel {
+  wechat
+  alipay
+  mock
+}
+
+enum DonationStatus {
+  init
+  paid
+  failed
+  refunded
+}
+
+enum EtlSource {
+  jiaowu
+  xuegong
+  roster
+}
+
+enum EtlType {
+  full
+  incremental
+}
+
+enum EtlStatus {
+  queued
+  running
+  success
+  failed
+}
+
+model AlumniProfile {
+  id          String       @id @default(uuid())
+  userId      String       @unique @map("user_id")
+  nameEnc     Bytes        @map("name_enc")
+  namePinyin  String       @map("name_pinyin")
+  idCardEnc   Bytes        @map("id_card_enc")
+  idCardHash  Bytes        @unique @map("id_card_hash")
+  phoneEnc    Bytes        @map("phone_enc")
+  year        Int
+  collegeId   String       @map("college_id")
+  deptId      String       @map("dept_id")
+  classId     String       @map("class_id")
+  avatarUrl   String?      @map("avatar_url")
+  status      AlumniStatus @default(active)
+  createdAt   DateTime     @default(now()) @map("created_at")
+  updatedAt   DateTime     @updatedAt @map("updated_at")
+
+  @@index([year, collegeId])
+  @@map("alumni_profile")
+}
+
+model AlumniApplication {
+  id            String            @id @default(uuid())
+  applicantName String            @map("applicant_name")
+  payload       Json
+  status        ApplicationStatus @default(pending)
+  reviewerId    String?           @map("reviewer_id")
+  reviewedAt    DateTime?         @map("reviewed_at")
+  evidenceUrls  String[]          @map("evidence_urls")
+  createdAt     DateTime          @default(now()) @map("created_at")
+
+  @@index([status, createdAt])
+  @@map("alumni_application")
+}
+
+model AlumniCard {
+  id           String    @id @default(uuid())
+  alumniId     String    @map("alumni_id")
+  cardNo       String    @unique @map("card_no")
+  qrSecret     Bytes     @map("qr_secret")
+  rotationSec  Int       @default(30) @map("rotation_sec")
+  issuedAt     DateTime  @default(now()) @map("issued_at")
+  revokedAt    DateTime? @map("revoked_at")
+
+  @@map("alumni_card")
+}
+
+model OrganizationNode {
+  id       String      @id @default(uuid())
+  parentId String?     @map("parent_id")
+  name     String
+  type     OrgNodeType
+  meta     Json        @default("{}")
+
+  @@index([parentId])
+  @@map("organization_node")
+}
+
+model OrganizationClosure {
+  ancestor   String
+  descendant String
+  depth      Int
+
+  @@id([ancestor, descendant])
+  @@index([ancestor, depth])
+  @@map("organization_closure")
+}
+
+model Post {
+  id         String   @id @default(uuid())
+  orgNodeId  String   @map("org_node_id")
+  authorId   String   @map("author_id")
+  title      String
+  contentMd  String   @map("content_md")
+  pinned     Boolean  @default(false)
+  visibility String   @default("public")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  @@index([orgNodeId, pinned, createdAt])
+  @@map("post")
+}
+
+model Activity {
+  id         String   @id @default(uuid())
+  title      String
+  templateId String?  @map("template_id")
+  dsl        Json
+  quota      Int
+  startAt    DateTime @map("start_at")
+  endAt      DateTime @map("end_at")
+  status     String   @default("draft")
+  creatorId  String   @map("creator_id")
+
+  @@index([status, startAt])
+  @@map("activity")
+}
+
+model ActivityEnrollment {
+  id          String           @id @default(uuid())
+  activityId  String           @map("activity_id")
+  alumniId    String           @map("alumni_id")
+  formData    Json             @map("form_data")
+  qrTicket    String           @map("qr_ticket")
+  checkInAt   DateTime?        @map("check_in_at")
+  status      EnrollmentStatus @default(enrolled)
+
+  @@unique([activityId, alumniId])
+  @@map("activity_enrollment")
+}
+
+model Reservation {
+  id          String   @id @default(uuid())
+  alumniId    String   @map("alumni_id")
+  serviceType String   @map("service_type")
+  slotDate    DateTime @map("slot_date")
+  slotTime    String   @map("slot_time")
+  companions  Json     @default("[]")
+  status      String   @default("pending")
+  qrTicket    String   @map("qr_ticket")
+
+  @@unique([serviceType, slotDate, slotTime, alumniId])
+  @@map("reservation")
+}
+
+model DonationOrder {
+  id           String          @id @default(uuid())
+  alumniId     String?         @map("alumni_id")
+  amountCents  BigInt          @map("amount_cents")
+  channel      DonationChannel
+  status       DonationStatus  @default(init)
+  outTradeNo   String          @unique @map("out_trade_no")
+  paidAt       DateTime?       @map("paid_at")
+  message      String?
+  anonymous    Boolean         @default(false)
+  createdAt    DateTime        @default(now()) @map("created_at")
+
+  @@index([status, paidAt])
+  @@map("donation_order")
+}
+
+model DonationWallEntry {
+  id          String   @id @default(uuid())
+  orderId     String   @map("order_id")
+  displayName String   @map("display_name")
+  amountCents BigInt   @map("amount_cents")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@index([createdAt])
+  @@map("donation_wall_entry")
+}
+
+model EtlJob {
+  id         String    @id @default(uuid())
+  source     EtlSource
+  type       EtlType
+  status     EtlStatus @default(queued)
+  stats      Json      @default("{}")
+  startedAt  DateTime? @map("started_at")
+  finishedAt DateTime? @map("finished_at")
+
+  @@index([status, startedAt])
+  @@map("etl_job")
+}
+
+model EtlStaging {
+  id         String  @id @default(uuid())
+  jobId      String  @map("job_id")
+  raw        Json
+  normalized Json?
+  errorCode  String? @map("error_code")
+  dedupeKey  String  @unique @map("dedupe_key")
+
+  @@map("etl_staging")
+}
+
+model PortalPage {
+  id          String    @id @default(uuid())
+  slug        String
+  title       String
+  dsl         Json
+  version     Int       @default(1)
+  published   Boolean   @default(false)
+  publishedAt DateTime? @map("published_at")
+
+  @@unique([slug, version])
+  @@map("portal_page")
+}
+
+model PortalTemplate {
+  id           String  @id @default(uuid())
+  name         String
+  category     String
+  thumbnailUrl String? @map("thumbnail_url")
+  dsl          Json
+  builtin      Boolean @default(false)
+
+  @@index([category, builtin])
+  @@map("portal_template")
+}
+
+model AuditLog {
+  id         String   @id @default(uuid())
+  actorId    String   @map("actor_id")
+  action     String
+  targetType String   @map("target_type")
+  targetId   String   @map("target_id")
+  payload    Json     @default("{}")
+  ip         String?
+  ua         String?
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  @@index([actorId, createdAt])
+  @@map("audit_log")
+}
+
+model NotificationLog {
+  id       String   @id @default(uuid())
+  channel  String
+  target   String
+  template String
+  payload  Json     @default("{}")
+  status   String
+  sentAt   DateTime @default(now()) @map("sent_at")
+
+  @@index([sentAt])
+  @@map("notification_log")
+}

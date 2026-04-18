@@ -1,0 +1,6 @@
+{
+  "package": "@bynu/service-organization",
+  "path": "services\\organization",
+  "hasTest": true,
+  "runAt": "2026-04-18T00:29:41.7438080+08:00"
+}

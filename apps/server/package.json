@@ -1,0 +1,56 @@
+{
+  "name": "@bynu/server",
+  "version": "0.1.0-alpha",
+  "private": true,
+  "main": "./dist/main.js",
+  "scripts": {
+    "dev": "tsx watch src/main.ts",
+    "start": "node dist/main.js",
+    "start:dev": "tsx watch src/main.ts",
+    "build": "tsup",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src"
+  },
+  "dependencies": {
+    "@bynu/cache": "workspace:*",
+    "@bynu/config": "workspace:*",
+    "@bynu/contracts": "workspace:*",
+    "@bynu/db": "workspace:*",
+    "@bynu/logger": "workspace:*",
+    "@bynu/service-activity": "workspace:*",
+    "@bynu/service-donation": "workspace:*",
+    "@bynu/service-etl": "workspace:*",
+    "@bynu/service-identity": "workspace:*",
+    "@bynu/service-notification": "workspace:*",
+    "@bynu/service-organization": "workspace:*",
+    "@bynu/service-portal-cms": "workspace:*",
+    "@bynu/service-workflow": "workspace:*",
+    "@electric-sql/pglite": "0.2.15",
+    "@nestjs/common": "10.4.15",
+    "@nestjs/core": "10.4.15",
+    "@nestjs/platform-express": "10.4.15",
+    "ioredis": "5.4.1",
+    "ioredis-mock": "8.9.0",
+    "nestjs-pino": "4.1.0",
+    "pg": "8.13.1",
+    "pino": "9.5.0",
+    "pino-http": "10.3.0",
+    "pino-pretty": "11.3.0",
+    "prom-client": "15.1.3",
+    "reflect-metadata": "0.2.2",
+    "rxjs": "7.8.1"
+  },
+  "devDependencies": {
+    "@nestjs/testing": "10.4.15",
+    "@swc/core": "1.9.3",
+    "@types/express": "4.17.21",
+    "@types/supertest": "6.0.2",
+    "supertest": "7.0.0",
+    "tsup": "8.3.5",
+    "tsx": "4.19.2",
+    "typescript": "5.6.3",
+    "vitest": "2.1.8"
+  }
+}
+

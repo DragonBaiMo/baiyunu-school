@@ -1,0 +1,6 @@
+{
+  "package": "@bynu/service-activity",
+  "path": "services\\activity",
+  "hasTest": true,
+  "runAt": "2026-04-18T00:29:41.7357899+08:00"
+}

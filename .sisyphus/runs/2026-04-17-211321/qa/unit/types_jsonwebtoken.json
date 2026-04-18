@@ -1,0 +1,6 @@
+{
+  "package": "@types/jsonwebtoken",
+  "path": "packages\\auth\\node_modules\\@types\\jsonwebtoken",
+  "hasTest": false,
+  "runAt": "2026-04-18T00:31:05.2394755+08:00"
+}

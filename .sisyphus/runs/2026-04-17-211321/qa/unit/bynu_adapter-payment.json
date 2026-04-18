@@ -1,0 +1,6 @@
+{
+  "package": "@bynu/adapter-payment",
+  "path": "packages\\adapters\\node_modules\\@bynu\\adapter-payment",
+  "hasTest": true,
+  "runAt": "2026-04-18T00:31:05.2154730+08:00"
+}

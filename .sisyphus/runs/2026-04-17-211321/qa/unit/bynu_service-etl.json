@@ -1,0 +1,6 @@
+{
+  "package": "@bynu/service-etl",
+  "path": "services\\etl",
+  "hasTest": true,
+  "runAt": "2026-04-18T00:29:41.7385281+08:00"
+}

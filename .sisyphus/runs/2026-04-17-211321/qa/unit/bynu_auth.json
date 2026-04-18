@@ -1,0 +1,6 @@
+{
+  "package": "@bynu/auth",
+  "path": "packages\\auth",
+  "hasTest": true,
+  "runAt": "2026-04-18T00:31:05.1340812+08:00"
+}

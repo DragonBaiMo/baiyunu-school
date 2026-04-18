@@ -1,0 +1,51 @@
+openapi: 3.1.0
+info:
+  title: 白云学院智慧校友平台 · 健康检查契约
+  version: 0.1.0-alpha
+  description: 内部监控探针。M1 仅实现 /internal/health；/internal/ready 预留 Phase 1b。
+servers:
+  - url: http://localhost:3000
+    description: BFF Gateway（dev）
+  - url: http://localhost:3001
+    description: Server（dev）
+paths:
+  /internal/health:
+    get:
+      summary: 健康探针
+      operationId: getHealth
+      tags: [internal]
+      responses:
+        '200':
+          description: 服务与依赖均正常
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+        '503':
+          description: 任一依赖降级
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+components:
+  schemas:
+    HealthResponse:
+      type: object
+      required: [status, deps, version]
+      properties:
+        status:
+          type: string
+          enum: [ok, degraded, fail]
+        deps:
+          type: object
+          required: [db, cache]
+          properties:
+            db:
+              type: string
+              enum: [ok, fail]
+            cache:
+              type: string
+              enum: [ok, fail]
+        version:
+          type: string
+          example: 0.1.0-alpha

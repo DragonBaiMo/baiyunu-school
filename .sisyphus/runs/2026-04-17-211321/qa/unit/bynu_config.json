@@ -1,0 +1,6 @@
+{
+  "package": "@bynu/config",
+  "path": "packages\\config",
+  "hasTest": true,
+  "runAt": "2026-04-18T00:31:05.1384919+08:00"
+}

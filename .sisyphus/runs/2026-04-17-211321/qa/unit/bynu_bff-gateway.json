@@ -1,0 +1,6 @@
+{
+  "package": "@bynu/bff-gateway",
+  "path": "apps\\bff-gateway",
+  "hasTest": true,
+  "runAt": "2026-04-18T00:31:05.1259755+08:00"
+}

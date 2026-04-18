@@ -1,0 +1,6 @@
+{
+  "package": "@bynu/service-workflow",
+  "path": "services\\workflow",
+  "hasTest": true,
+  "runAt": "2026-04-18T00:29:41.7464094+08:00"
+}

@@ -1,0 +1,6 @@
+{
+  "package": "@bynu/service-donation",
+  "path": "services\\donation",
+  "hasTest": true,
+  "runAt": "2026-04-18T00:29:41.7372340+08:00"
+}

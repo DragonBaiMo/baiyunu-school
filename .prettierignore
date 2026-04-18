@@ -1,0 +1,10 @@
+node_modules
+dist
+build
+coverage
+.turbo
+.data
+.sisyphus
+pnpm-lock.yaml
+downloaded_images
+**/generated/**

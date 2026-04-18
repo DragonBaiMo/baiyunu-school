@@ -1,0 +1,21 @@
+{
+  "name": "@bynu/alumni-miniapp",
+  "version": "0.1.0-alpha",
+  "private": true,
+  "description": "Taro 4.x 小程序入口：Phase 1a 文档化占位（DEGRADED），Phase 1b 起接入真实 Taro 构建。",
+  "scripts": {
+    "dev:weapp": "echo [alumni-miniapp DEGRADED] Phase 1b 接入 Taro dev --type weapp",
+    "build:weapp": "echo [alumni-miniapp DEGRADED] Phase 1b 接入 Taro build --type weapp",
+    "dev": "echo [alumni-miniapp DEGRADED] 跳过",
+    "build": "echo [alumni-miniapp DEGRADED] 跳过",
+    "test": "echo [alumni-miniapp DEGRADED] 小程序端单测延后至 Phase 1b",
+    "typecheck": "tsc --noEmit",
+    "lint": "echo [alumni-miniapp DEGRADED] lint 占位"
+  },
+  "dependencies": {
+    "@bynu/design-tokens": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "5.6.3"
+  }
+}

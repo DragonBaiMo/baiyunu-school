@@ -1,0 +1,222 @@
+{
+  "run_id": "2026-04-17-211321",
+  "run_root": ".sisyphus/runs/2026-04-17-211321",
+  "task_name": "baiyunu-alumni-platform",
+  "mode": "fullstack+design",
+  "pipeline": [
+    "P0",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6A",
+    "P6B",
+    "P7",
+    "P8"
+  ],
+  "current_phase": "P5",
+  "current_phase_index": 5,
+  "created_at": "2026-04-17T21:13:21",
+  "phases": {
+    "P0": {
+      "status": "completed",
+      "gates": {
+        "path_selected": {
+          "status": "passed",
+          "updated_at": "2026-04-17T21:15:59",
+          "reason": ".sisyphus/runs/2026-04-17-211321/reviews/P0-path_selected.md"
+        },
+        "decision_logged": {
+          "status": "pending"
+        }
+      },
+      "completed_steps": [
+        "triage"
+      ],
+      "completed_at": "2026-04-17T21:15:59"
+    },
+    "P1": {
+      "status": "completed",
+      "gates": {
+        "ambiguity_resolved": {
+          "status": "pending"
+        },
+        "knowledge_gaps_filled": {
+          "status": "pending"
+        },
+        "intel_summary_written": {
+          "status": "pending"
+        }
+      },
+      "completed_steps": [
+        "phase-1a-scaffolding"
+      ],
+      "completed_at": "2026-04-18T10:15:00"
+    },
+    "P2": {
+      "status": "completed",
+      "gates": {
+        "plan_file_exists": {
+          "status": "pending"
+        },
+        "momus_0_blocker": {
+          "status": "pending"
+        },
+        "oracle_plan_approved": {
+          "status": "pending"
+        },
+        "user_plan_confirmed": {
+          "status": "pending"
+        }
+      },
+      "completed_steps": []
+    },
+    "P3": {
+      "status": "completed",
+      "gates": {
+        "draft_complete": {
+          "status": "pending"
+        },
+        "oracle_0_blocker": {
+          "status": "pending"
+        },
+        "oracle_rating_B_plus": {
+          "status": "pending"
+        },
+        "user_design_confirmed": {
+          "status": "pending"
+        }
+      },
+      "completed_steps": []
+    },
+    "P4": {
+      "status": "completed",
+      "gates": {
+        "conventions_created": {
+          "status": "pending"
+        },
+        "doctrine_frozen": {
+          "status": "pending"
+        },
+        "mapping_table_done": {
+          "status": "pending"
+        },
+        "sync_initialized": {
+          "status": "pending"
+        },
+        "phase_summary_written": {
+          "status": "pending"
+        }
+      },
+      "completed_steps": []
+    },
+    "P5": {
+      "status": "in_progress",
+      "gates": {
+        "schema_executable": {
+          "status": "pending"
+        },
+        "api_contract_complete": {
+          "status": "pending"
+        },
+        "types_generated": {
+          "status": "pending"
+        },
+        "contracts_md_created": {
+          "status": "pending"
+        },
+        "contract_locked": {
+          "status": "pending"
+        }
+      },
+      "completed_steps": [
+        "phase-1a-scaffolding"
+      ]
+    },
+    "P6A": {
+      "status": "pending",
+      "gates": {
+        "all_endpoints_implemented": {
+          "status": "pending"
+        },
+        "backend_build_pass": {
+          "status": "pending"
+        },
+        "backend_tests_pass": {
+          "status": "pending"
+        },
+        "backend_types_pass": {
+          "status": "pending"
+        },
+        "doctrine_backend_gate": {
+          "status": "pending"
+        },
+        "backend_progress_complete": {
+          "status": "pending"
+        }
+      },
+      "completed_steps": []
+    },
+    "P6B": {
+      "status": "pending",
+      "gates": {
+        "all_pages_rendered": {
+          "status": "pending"
+        },
+        "frontend_build_pass": {
+          "status": "pending"
+        },
+        "frontend_tests_pass": {
+          "status": "pending"
+        },
+        "frontend_types_pass": {
+          "status": "pending"
+        },
+        "doctrine_frontend_gate": {
+          "status": "pending"
+        },
+        "frontend_progress_complete": {
+          "status": "pending"
+        }
+      },
+      "completed_steps": []
+    },
+    "P7": {
+      "status": "pending",
+      "gates": {
+        "smoke_test_pass": {
+          "status": "pending"
+        },
+        "e2e_pass": {
+          "status": "pending"
+        },
+        "data_roundtrip_verified": {
+          "status": "pending"
+        },
+        "security_scan_pass": {
+          "status": "pending"
+        }
+      },
+      "completed_steps": []
+    },
+    "P8": {
+      "status": "pending",
+      "gates": {
+        "self_verify_pass": {
+          "status": "pending"
+        },
+        "oracle_final_pass": {
+          "status": "pending"
+        },
+        "consistency_scan_pass": {
+          "status": "pending"
+        },
+        "user_accepted": {
+          "status": "pending"
+        }
+      },
+      "completed_steps": []
+    }
+  }
+}
