@@ -2,20 +2,24 @@
   "name": "@bynu/alumni-miniapp",
   "version": "0.1.0-alpha",
   "private": true,
-  "description": "Taro 4.x 小程序入口：Phase 1a 文档化占位（DEGRADED），Phase 1b 起接入真实 Taro 构建。",
+  "description": "白云大学校友平台 微信小程序（原生 JS）",
   "scripts": {
-    "dev:weapp": "echo [alumni-miniapp DEGRADED] Phase 1b 接入 Taro dev --type weapp",
-    "build:weapp": "echo [alumni-miniapp DEGRADED] Phase 1b 接入 Taro build --type weapp",
-    "dev": "echo [alumni-miniapp DEGRADED] 跳过",
-    "build": "echo [alumni-miniapp DEGRADED] 跳过",
-    "test": "echo [alumni-miniapp DEGRADED] 小程序端单测延后至 Phase 1b",
+    "dev:weapp": "echo [alumni-miniapp] 微信小程序需用微信开发者工具打开 apps/alumni-miniapp/miniprogram",
+    "build:weapp": "echo [alumni-miniapp] 微信小程序无需构建，直接用开发者工具上传",
+    "dev": "echo [alumni-miniapp] 请使用微信开发者工具打开 miniprogram 目录",
+    "build": "echo [alumni-miniapp] 无需构建",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage",
     "typecheck": "tsc --noEmit",
-    "lint": "echo [alumni-miniapp DEGRADED] lint 占位"
+    "lint": "echo [alumni-miniapp] lint 占位"
   },
   "dependencies": {
     "@bynu/design-tokens": "workspace:*"
   },
   "devDependencies": {
-    "typescript": "5.6.3"
+    "@vitest/coverage-v8": "2.1.8",
+    "typescript": "5.6.3",
+    "vitest": "2.1.8"
   }
 }

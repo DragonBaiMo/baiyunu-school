@@ -3,7 +3,7 @@ const api = require('../../utils/api');
 const { requireAdmin, getUser, clearAuth } = require('../../utils/auth');
 
 Page({
-  data: { stats: null, user: null },
+  data: { stats: { memberTotal: 0, pendingMembers: 0, activityTotal: 0, enrollTotal: 0, newsTotal: 0, donationTotal: 0 }, user: null },
   onShow() {
     if (!requireAdmin()) return;
     this.load();

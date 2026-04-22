@@ -3,7 +3,7 @@ const api = require('../../utils/api');
 const { requireAlumni, getUser } = require('../../utils/auth');
 
 Page({
-  data: { act: null, loading: true, enrolling: false },
+  data: { act: null, loading: true, enrolling: false, notFound: false },
   onLoad(q) {
     if (!requireAlumni()) return;
     this.id = q.id;
@@ -11,7 +11,7 @@ Page({
   },
   async load() {
     const act = await api.getActivityById(this.id);
-    this.setData({ act, loading: false });
+    this.setData({ act, loading: false, notFound: !act });
   },
   async enroll() {
     if (this.data.enrolling) return;

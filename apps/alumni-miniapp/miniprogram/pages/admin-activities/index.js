@@ -35,7 +35,7 @@ Page({
       showForm: false,
       form: { title: '', date: '', location: '', category: '校友聚会', capacity: 100, description: '' }
     });
-    this.load();
+    await this.load();
   },
   async remove(e) {
     const id = e.currentTarget.dataset.id;
@@ -43,7 +43,7 @@ Page({
     if (res.confirm) {
       await api.adminDeleteActivity(id);
       wx.showToast({ title: '已删除', icon: 'success' });
-      this.load();
+      await this.load();
     }
   }
 });

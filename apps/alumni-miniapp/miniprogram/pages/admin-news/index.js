@@ -27,7 +27,7 @@ Page({
     await api.adminCreateNews(this.data.form);
     wx.showToast({ title: '发布成功', icon: 'success' });
     this.setData({ showForm: false, form: { title: '', summary: '', category: '校友动态' } });
-    this.load();
+    await this.load();
   },
   async remove(e) {
     const id = e.currentTarget.dataset.id;
@@ -35,7 +35,7 @@ Page({
     if (res.confirm) {
       await api.adminDeleteNews(id);
       wx.showToast({ title: '已删除', icon: 'success' });
-      this.load();
+      await this.load();
     }
   }
 });

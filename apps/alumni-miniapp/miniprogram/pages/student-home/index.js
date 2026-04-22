@@ -7,7 +7,7 @@ Page({
     user: null,
     news: [],
     hotActivities: [],
-    donationStats: null,
+    donationStats: { totalAmount: 0, totalDonors: 0, ongoingProjects: 0, highlights: [] },
     loading: true
   },
   onShow() {

@@ -4,7 +4,7 @@ const { requireAlumni, getUser } = require('../../utils/auth');
 
 Page({
   data: {
-    stats: null,
+    stats: { totalAmount: 0, totalDonors: 0, ongoingProjects: 0, highlights: [] },
     project: '白云之光奖学金',
     amount: 100,
     amounts: [50, 100, 500, 1000],
@@ -36,7 +36,7 @@ Page({
         amount: this.data.amount
       });
       wx.showToast({ title: '捐赠成功 · 感谢支持', icon: 'success' });
-      this.load();
+      await this.load();
     } catch (e) {
       wx.showToast({ title: e.message, icon: 'none' });
     } finally {

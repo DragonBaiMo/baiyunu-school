@@ -16,11 +16,11 @@ Page({
   async approve(e) {
     await api.adminUpdateMemberStatus(e.currentTarget.dataset.id, 'approved');
     wx.showToast({ title: '已通过', icon: 'success' });
-    this.load();
+    await this.load();
   },
   async reject(e) {
     await api.adminUpdateMemberStatus(e.currentTarget.dataset.id, 'rejected');
     wx.showToast({ title: '已驳回', icon: 'success' });
-    this.load();
+    await this.load();
   }
 });
