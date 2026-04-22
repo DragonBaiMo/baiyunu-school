@@ -1,0 +1,28 @@
+<view class="container">
+  <view class="filter-row">
+    <view class="chip {{filter==='all' ? 'active' : ''}}" data-f="all" bindtap="setFilter">全部 ({{list.length}})</view>
+    <view class="chip {{filter==='pending' ? 'active' : ''}}" data-f="pending" bindtap="setFilter">待审核</view>
+    <view class="chip {{filter==='approved' ? 'active' : ''}}" data-f="approved" bindtap="setFilter">已通过</view>
+    <view class="chip {{filter==='rejected' ? 'active' : ''}}" data-f="rejected" bindtap="setFilter">已驳回</view>
+  </view>
+
+  <block wx:for="{{list}}" wx:key="id" wx:if="{{filter==='all' || item.status===filter}}">
+    <view class="card member">
+      <view class="avatar">{{item.name.slice(0,1)}}</view>
+      <view class="member-body">
+        <view class="row-between">
+          <view class="member-name">{{item.name}}</view>
+          <view class="tag {{item.status==='pending' ? 'tag-accent' : item.status==='approved' ? 'tag-success' : 'tag-danger'}}">
+            {{item.status==='pending' ? '待审' : item.status==='approved' ? '已通过' : '已驳回'}}
+          </view>
+        </view>
+        <view class="text-sub text-small">{{item.class}}</view>
+        <view class="text-sub text-small">{{item.company}} · {{item.position}}</view>
+        <view wx:if="{{item.status==='pending'}}" class="action-row">
+          <button class="mini-btn primary" data-id="{{item.id}}" bindtap="approve">通过</button>
+          <button class="mini-btn ghost" data-id="{{item.id}}" bindtap="reject">驳回</button>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

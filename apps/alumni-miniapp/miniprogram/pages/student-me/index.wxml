@@ -1,0 +1,46 @@
+<view class="container">
+  <view class="me-hero">
+    <view class="avatar-big">{{user.name ? user.name.slice(0,1) : '友'}}</view>
+    <view style="margin-left:24rpx;">
+      <view style="font-size:36rpx;font-weight:600;color:#fff;">{{user.name}}</view>
+      <view style="font-size:24rpx;color:rgba(255,255,255,0.8);margin-top:6rpx;">{{user.class}}</view>
+      <view class="tag tag-accent" style="margin-top:10rpx;">已认证校友</view>
+    </view>
+  </view>
+
+  <view class="stat-grid">
+    <view class="stat-box">
+      <view class="stat-n">{{enrollments.length}}</view>
+      <view class="stat-l">活动报名</view>
+    </view>
+    <view class="stat-box">
+      <view class="stat-n">{{donations.length}}</view>
+      <view class="stat-l">捐赠记录</view>
+    </view>
+  </view>
+
+  <view class="section-title">我报名的活动</view>
+  <view class="card" wx:for="{{enrollments}}" wx:key="id">
+    <view class="title" style="font-size:28rpx;">{{item.activity.title}}</view>
+    <view class="text-sub text-small">📆 {{item.activity.date}} · 📍 {{item.activity.location}}</view>
+  </view>
+  <view wx:if="{{!enrollments.length}}" class="empty">暂无报名记录</view>
+
+  <view class="section-title">个人信息</view>
+  <view class="card">
+    <view class="info"><text class="info-k">姓名</text><text>{{user.name}}</text></view>
+    <view class="info"><text class="info-k">班级</text><text>{{user.class}}</text></view>
+    <view class="info"><text class="info-k">单位</text><text>{{user.company || '-'}}</text></view>
+    <view class="info"><text class="info-k">职位</text><text>{{user.position || '-'}}</text></view>
+  </view>
+
+  <button class="btn btn-ghost" bindtap="logout" style="margin-top:24rpx;">退出登录</button>
+  <view class="safe-bottom"></view>
+</view>
+
+<view class="bottom-nav">
+  <view class="nav-item" bindtap="goHome"><text class="icon">🏠</text>首页</view>
+  <view class="nav-item" bindtap="goActs"><text class="icon">📅</text>活动</view>
+  <view class="nav-item" bindtap="goDonate"><text class="icon">💝</text>捐赠</view>
+  <view class="nav-item active"><text class="icon">👤</text>我的</view>
+</view>

@@ -1,0 +1,57 @@
+<view class="container">
+  <view class="admin-hero">
+    <view>
+      <view style="font-size:32rpx;font-weight:600;color:#fff;">{{user.name || '管理员'}}</view>
+      <view style="font-size:24rpx;color:rgba(255,255,255,0.75);margin-top:4rpx;">数据驾驶舱 · 实时概览</view>
+    </view>
+    <view class="logout-btn" bindtap="logout">退出</view>
+  </view>
+
+  <view class="kpi-grid">
+    <view class="kpi">
+      <view class="kpi-label">校友总数</view>
+      <view class="kpi-num">{{stats.memberTotal}}</view>
+      <view class="kpi-extra">待审核 {{stats.pendingMembers}}</view>
+    </view>
+    <view class="kpi">
+      <view class="kpi-label">活动总数</view>
+      <view class="kpi-num">{{stats.activityTotal}}</view>
+      <view class="kpi-extra">累计报名 {{stats.enrollTotal}}</view>
+    </view>
+    <view class="kpi">
+      <view class="kpi-label">资讯文章</view>
+      <view class="kpi-num">{{stats.newsTotal}}</view>
+    </view>
+    <view class="kpi">
+      <view class="kpi-label">捐赠总额</view>
+      <view class="kpi-num">¥{{stats.donationTotal}}</view>
+    </view>
+  </view>
+
+  <view class="section-title">管理模块</view>
+  <view class="module-card" bindtap="goMembers">
+    <view class="module-icon" style="background:#EEF2FB;color:#0F2C5C;">👥</view>
+    <view class="module-body">
+      <view class="module-title">校友成员管理</view>
+      <view class="module-desc">审核新成员申请、维护校友档案</view>
+    </view>
+    <view class="badge-red" wx:if="{{stats.pendingMembers > 0}}">{{stats.pendingMembers}}</view>
+    <view class="module-arrow">›</view>
+  </view>
+  <view class="module-card" bindtap="goActs">
+    <view class="module-icon" style="background:#FDF3D6;color:#8B6F14;">📅</view>
+    <view class="module-body">
+      <view class="module-title">活动管理</view>
+      <view class="module-desc">发布新活动、查看报名情况</view>
+    </view>
+    <view class="module-arrow">›</view>
+  </view>
+  <view class="module-card" bindtap="goNews">
+    <view class="module-icon" style="background:#E8F5EE;color:#10B981;">📰</view>
+    <view class="module-body">
+      <view class="module-title">资讯管理</view>
+      <view class="module-desc">发布校友动态、学院通告</view>
+    </view>
+    <view class="module-arrow">›</view>
+  </view>
+</view>

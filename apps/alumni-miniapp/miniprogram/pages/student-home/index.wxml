@@ -1,0 +1,89 @@
+<view class="container">
+  <!-- 顶部欢迎 -->
+  <view class="hero-card">
+    <view class="welcome-row">
+      <view>
+        <view class="welcome">欢迎回来，{{user.name || '校友'}}</view>
+        <view class="welcome-sub">{{user.class || ''}} · {{user.company || '白云大学校友'}}</view>
+      </view>
+      <view class="avatar">{{user.name ? user.name.slice(0,1) : '友'}}</view>
+    </view>
+    <view class="stats-row">
+      <view class="stat-item">
+        <view class="stat-num">{{donationStats.totalDonors || 0}}</view>
+        <view class="stat-label">捐赠校友</view>
+      </view>
+      <view class="stat-item">
+        <view class="stat-num">{{hotActivities.length}}</view>
+        <view class="stat-label">热门活动</view>
+      </view>
+      <view class="stat-item">
+        <view class="stat-num">{{news.length}}</view>
+        <view class="stat-label">最新资讯</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 快捷入口 -->
+  <view class="quick-grid">
+    <view class="quick-item" bindtap="goActivitiesList">
+      <view class="quick-icon" style="background:#EEF2FB;color:#0F2C5C;">📅</view>
+      <view class="quick-text">活动报名</view>
+    </view>
+    <view class="quick-item" bindtap="goDonate">
+      <view class="quick-icon" style="background:#FDF3D6;color:#8B6F14;">💝</view>
+      <view class="quick-text">公益捐赠</view>
+    </view>
+    <view class="quick-item" bindtap="toMe">
+      <view class="quick-icon" style="background:#E8F5EE;color:#10B981;">👤</view>
+      <view class="quick-text">我的</view>
+    </view>
+    <view class="quick-item" bindtap="goActivitiesList">
+      <view class="quick-icon" style="background:#FDE9E9;color:#EF4444;">🎓</view>
+      <view class="quick-text">返校日</view>
+    </view>
+  </view>
+
+  <!-- 最新资讯 -->
+  <view class="section-header">
+    <text class="section-title">最新资讯</text>
+    <text class="text-sub text-small">共 {{news.length}} 条</text>
+  </view>
+  <view class="card" wx:for="{{news}}" wx:key="id">
+    <view class="row-between">
+      <view class="tag">{{item.category}}</view>
+      <view class="text-sub text-small">{{item.date}}</view>
+    </view>
+    <view class="news-title">{{item.title}}</view>
+    <view class="text-sub text-small">{{item.summary}}</view>
+  </view>
+
+  <!-- 热门活动 -->
+  <view class="section-header">
+    <text class="section-title">热门活动</text>
+    <text class="text-primary text-small" bindtap="goActivitiesList">查看全部 ›</text>
+  </view>
+  <view class="card" wx:for="{{hotActivities}}" wx:key="id" bindtap="openActivity" data-id="{{item.id}}">
+    <view class="row-between">
+      <view class="title" style="font-size:30rpx;">{{item.title}}</view>
+      <view class="tag tag-accent" wx:if="{{item.coverTag}}">{{item.coverTag}}</view>
+    </view>
+    <view class="text-sub text-small">📍 {{item.location}} · 📆 {{item.date}}</view>
+    <view class="progress-row">
+      <view class="progress-bar">
+        <view class="progress-fill" style="width:{{item.enrolled/item.capacity*100}}%;"></view>
+      </view>
+      <view class="text-small text-sub" style="margin-left:12rpx;">{{item.enrolled}}/{{item.capacity}}</view>
+    </view>
+  </view>
+
+  <view class="safe-bottom"></view>
+</view>
+
+<!-- 底部导航 -->
+<view class="bottom-nav">
+  <view class="nav-item active"><text class="icon">🏠</text>首页</view>
+  <view class="nav-item" bindtap="goActivitiesList"><text class="icon">📅</text>活动</view>
+  <view class="nav-item" bindtap="goDonate"><text class="icon">💝</text>捐赠</view>
+  <view class="nav-item" bindtap="toMe"><text class="icon">👤</text>我的</view>
+</view>

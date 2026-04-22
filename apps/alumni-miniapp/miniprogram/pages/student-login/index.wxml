@@ -1,0 +1,22 @@
+<view class="container">
+  <view class="card">
+    <view class="title">欢迎回到母校</view>
+    <view class="subtitle">使用超星统一认证或自助登记进入平台</view>
+  </view>
+
+  <view class="card">
+    <button class="btn" bindtap="ssoLogin" loading="{{loading}}">超星统一认证一键登录</button>
+    <view class="text-small text-sub" style="text-align:center;margin-top:14rpx;">演示模式：一键以"张三（2016级计算机）"身份登录</view>
+  </view>
+
+  <view class="card">
+    <view class="subtitle" style="margin-bottom:20rpx;">或使用姓名+学号自助登记</view>
+    <input class="input" placeholder="姓名" value="{{name}}" bindinput="onName" style="margin-bottom:16rpx;" />
+    <input class="input" placeholder="学号 / 身份证后6位" value="{{studentId}}" bindinput="onSid" style="margin-bottom:24rpx;" />
+    <button class="btn btn-ghost" bindtap="formLogin" loading="{{loading}}">提交登记并登录</button>
+  </view>
+
+  <view class="text-small text-sub" style="text-align:center;margin-top:40rpx;">
+    提示：本端为演示版，数据仅保存在本地小程序存储
+  </view>
+</view>

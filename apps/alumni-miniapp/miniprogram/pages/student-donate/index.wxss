@@ -1,0 +1,22 @@
+.donate-hero {
+  background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+  color: #fff;
+  border-radius: 20rpx;
+}
+.amount { font-size: 60rpx; font-weight: 700; margin-top: 8rpx; }
+.section-title { font-size: 30rpx; font-weight: 600; margin: 24rpx 4rpx 16rpx; }
+.amount-grid { display: flex; justify-content: space-between; }
+.amount-chip {
+  flex: 1; margin: 0 8rpx;
+  padding: 20rpx 0; text-align: center;
+  border: 2rpx solid #E5E7EB; border-radius: 12rpx;
+  font-size: 30rpx; color: #1A1F2E;
+}
+.amount-chip:first-child { margin-left: 0; }
+.amount-chip:last-child { margin-right: 0; }
+.amount-chip.active {
+  background: rgba(212,175,55,0.15);
+  border-color: #D4AF37; color: #8B6F14; font-weight: 600;
+}
+.progress-bar { height: 8rpx; background: #EEF2FB; border-radius: 4rpx; overflow: hidden; }
+.progress-fill { height: 100%; background: #D4AF37; }

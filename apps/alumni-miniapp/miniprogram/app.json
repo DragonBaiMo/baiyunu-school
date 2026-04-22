@@ -1,0 +1,26 @@
+{
+  "pages": [
+    "pages/launch/index",
+    "pages/student-login/index",
+    "pages/student-home/index",
+    "pages/student-activities/index",
+    "pages/student-activity-detail/index",
+    "pages/student-donate/index",
+    "pages/student-me/index",
+    "pages/admin-login/index",
+    "pages/admin-dashboard/index",
+    "pages/admin-members/index",
+    "pages/admin-activities/index",
+    "pages/admin-news/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#0F2C5C",
+    "navigationBarTitleText": "白云大学校友",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F5F7FA"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

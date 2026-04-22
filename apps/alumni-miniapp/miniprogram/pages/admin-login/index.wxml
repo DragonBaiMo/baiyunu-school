@@ -1,0 +1,17 @@
+<view class="container">
+  <view class="card">
+    <view class="title">管理员控制台</view>
+    <view class="subtitle">白云大学校友平台 · 管理后台</view>
+  </view>
+  <view class="card">
+    <view class="label">用户名</view>
+    <input class="input" placeholder="请输入管理员账号" value="{{username}}" bindinput="onU" />
+    <view class="label" style="margin-top:20rpx;">密码</view>
+    <input class="input" password placeholder="请输入密码" value="{{password}}" bindinput="onP" />
+    <button class="btn" bindtap="login" loading="{{loading}}" style="margin-top:32rpx;">登录</button>
+    <view class="demo-box" bindtap="fillDemo">
+      <view class="text-small text-primary" style="font-weight:600;">🔑 演示账号</view>
+      <view class="text-small text-sub">用户名：admin · 密码：admin123（点击自动填入）</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,27 @@
+.me-hero {
+  background: linear-gradient(135deg, #0F2C5C 0%, #1E4B9E 100%);
+  border-radius: 20rpx;
+  padding: 40rpx 28rpx;
+  margin-bottom: 24rpx;
+  display: flex; align-items: center;
+}
+.avatar-big {
+  width: 120rpx; height: 120rpx; border-radius: 50%;
+  background: #D4AF37; color: #2C1810;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 48rpx; font-weight: 700;
+}
+.stat-grid { display: flex; gap: 20rpx; margin-bottom: 24rpx; }
+.stat-box {
+  flex: 1; background: #fff; border-radius: 16rpx;
+  padding: 28rpx 0; text-align: center;
+}
+.stat-n { font-size: 44rpx; font-weight: 700; color: #0F2C5C; }
+.stat-l { font-size: 24rpx; color: #6B7280; margin-top: 6rpx; }
+.section-title { font-size: 30rpx; font-weight: 600; margin: 16rpx 4rpx; }
+.info {
+  display: flex; justify-content: space-between;
+  padding: 16rpx 0; border-bottom: 1rpx solid #F1F3F7;
+}
+.info:last-child { border-bottom: none; }
+.info-k { color: #6B7280; }

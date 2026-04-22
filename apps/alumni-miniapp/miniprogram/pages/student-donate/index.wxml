@@ -1,0 +1,56 @@
+<view class="container">
+  <view class="card donate-hero">
+    <view class="text-small" style="color:rgba(255,255,255,0.8);">累计捐赠</view>
+    <view class="amount">¥ {{stats.totalAmount}}</view>
+    <view class="row-between" style="margin-top:16rpx;">
+      <view class="text-small" style="color:rgba(255,255,255,0.9);">{{stats.totalDonors}} 位校友已参与</view>
+      <view class="text-small" style="color:#D4AF37;">进行中 {{stats.ongoingProjects}} 个项目</view>
+    </view>
+  </view>
+
+  <view class="section-title">选择项目</view>
+  <view class="card proj-item" wx:for="{{stats.highlights}}" wx:key="name"
+    bindtap="pickProject" data-name="{{item.name}}">
+    <view class="row-between">
+      <view class="title" style="font-size:30rpx;">{{item.name}}</view>
+      <view class="tag {{project===item.name ? 'tag-accent' : ''}}">{{project===item.name ? '已选' : '选择'}}</view>
+    </view>
+    <view class="text-sub text-small">已募集 ¥{{item.amount}} · 进度 {{item.progress}}%</view>
+    <view class="progress-bar" style="margin-top:12rpx;">
+      <view class="progress-fill" style="width:{{item.progress}}%;"></view>
+    </view>
+  </view>
+
+  <view class="section-title">捐赠金额</view>
+  <view class="card">
+    <view class="amount-grid">
+      <view wx:for="{{amounts}}" wx:key="*this"
+        class="amount-chip {{amount===item ? 'active' : ''}}"
+        data-v="{{item}}" bindtap="pickAmount">¥{{item}}</view>
+    </view>
+    <input class="input" type="number" placeholder="自定义金额" value="{{amount}}" bindinput="onAmount" style="margin-top:20rpx;" />
+    <button class="btn btn-accent" bindtap="submit" loading="{{submitting}}" style="margin-top:24rpx;">
+      立即捐赠 ¥{{amount}}
+    </button>
+    <view class="text-small text-sub" style="text-align:center;margin-top:14rpx;">演示捐赠：不会真实扣款</view>
+  </view>
+
+  <view class="section-title">我的捐赠记录</view>
+  <view class="card" wx:for="{{myOrders}}" wx:key="id">
+    <view class="row-between">
+      <view>{{item.projectName}}</view>
+      <view class="text-primary" style="font-weight:600;">¥{{item.amount}}</view>
+    </view>
+    <view class="text-sub text-small">{{item.createdAt}}</view>
+  </view>
+  <view wx:if="{{!myOrders.length}}" class="empty">暂无捐赠记录</view>
+
+  <view class="safe-bottom"></view>
+</view>
+
+<view class="bottom-nav">
+  <view class="nav-item" bindtap="goHome"><text class="icon">🏠</text>首页</view>
+  <view class="nav-item" bindtap="goActs"><text class="icon">📅</text>活动</view>
+  <view class="nav-item active"><text class="icon">💝</text>捐赠</view>
+  <view class="nav-item" bindtap="goMe"><text class="icon">👤</text>我的</view>
+</view>

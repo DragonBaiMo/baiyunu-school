@@ -1,0 +1,24 @@
+<view class="launch">
+  <view class="hero">
+    <view class="badge">BAIYUN UNIVERSITY</view>
+    <view class="hero-title">白云大学\n校友平台</view>
+    <view class="hero-sub">连接母校 · 聚合校友 · 共创价值</view>
+  </view>
+  <view class="role-card" bindtap="goAlumni">
+    <view class="role-icon">🎓</view>
+    <view class="role-body">
+      <view class="role-title">校友 / 学生端</view>
+      <view class="role-desc">浏览资讯、报名活动、公益捐赠、校友身份认证</view>
+    </view>
+    <view class="role-arrow">›</view>
+  </view>
+  <view class="role-card" bindtap="goAdmin">
+    <view class="role-icon" style="background:#D4AF37;">⚙️</view>
+    <view class="role-body">
+      <view class="role-title">管理员端</view>
+      <view class="role-desc">数据驾驶舱、成员审核、活动与资讯管理</view>
+    </view>
+    <view class="role-arrow">›</view>
+  </view>
+  <view class="footer">© 2026 白云大学校友办公室</view>
+</view>

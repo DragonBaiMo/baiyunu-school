@@ -1,0 +1,31 @@
+<view class="container" wx:if="{{act}}">
+  <view class="card">
+    <view class="tag tag-accent" wx:if="{{act.coverTag}}">{{act.coverTag}}</view>
+    <view class="title" style="margin-top:12rpx;">{{act.title}}</view>
+    <view class="text-sub">{{act.category}}</view>
+  </view>
+
+  <view class="card">
+    <view class="info-row"><text class="info-label">📆 时间</text><text>{{act.date}}</text></view>
+    <view class="info-row"><text class="info-label">📍 地点</text><text>{{act.location}}</text></view>
+    <view class="info-row"><text class="info-label">👥 名额</text><text>{{act.enrolled}} / {{act.capacity}}</text></view>
+    <view class="divider"></view>
+    <view class="text-lg" style="font-weight:600;margin-bottom:12rpx;">活动介绍</view>
+    <view>{{act.description}}</view>
+  </view>
+
+  <view class="card">
+    <view class="progress-row">
+      <view class="progress-bar">
+        <view class="progress-fill" style="width:{{act.enrolled/act.capacity*100}}%;"></view>
+      </view>
+      <view class="text-small text-sub" style="margin-left:12rpx;">{{act.enrolled}}/{{act.capacity}}</view>
+    </view>
+    <button class="btn" bindtap="enroll" loading="{{enrolling}}"
+      disabled="{{act.enrolled >= act.capacity}}"
+      style="margin-top:24rpx;">
+      {{act.enrolled >= act.capacity ? '名额已满' : '立即报名'}}
+    </button>
+  </view>
+</view>
+<view wx:elif="{{!loading}}" class="empty">活动不存在</view>

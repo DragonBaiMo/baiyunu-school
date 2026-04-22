@@ -1,0 +1,8 @@
+.label { font-size: 26rpx; color: #6B7280; margin-bottom: 10rpx; }
+.demo-box {
+  margin-top: 24rpx;
+  padding: 20rpx;
+  background: #EEF2FB;
+  border-radius: 12rpx;
+  border-left: 6rpx solid #0F2C5C;
+}

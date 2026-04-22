@@ -1,0 +1,8 @@
+.label { font-size: 24rpx; color: #6B7280; margin-bottom: 8rpx; }
+.section-title { font-size: 30rpx; font-weight: 600; margin: 28rpx 4rpx 16rpx; }
+.mini-btn {
+  padding: 10rpx 0; font-size: 24rpx; border-radius: 8rpx; border: none;
+  width: 140rpx; text-align: center;
+}
+.mini-btn::after { border: none; }
+.mini-btn.ghost { background: #fff; color: #EF4444; border: 2rpx solid #EF4444; }
